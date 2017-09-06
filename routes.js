@@ -51,81 +51,67 @@ router.route('/activities/:id')
 })
 
 // // PUT	/activities/{id}	Update one activity I am tracking, changing attributes such as name or type. Does not allow for changing tracked data.
-//models.Activity.save is not a function TODO clean/fix this
 router.route('/activities/:id')
 .put(function(req, res){
-
-  let id = req.params.id;
-  models.Activity.findById(id).then(function(activity){
-    res.send({activity});
-  let update = {name: req.body.name};
-  models.Activity.save(update).then(function(update){
-    res.json({message: "Updated name"});
-  })
-})
-})
-
-
-// // DELETE	/activities/{id}	Delete one activity I am tracking. This should remove tracked data for that activity as well.
-//cannot delete at the moment
-router.route('/activities/:id')
-.delete(function(req,res){
-  models.Activity.destroy({
-    where:{
+  models.Activity.update({
+    name: req.body.name
+  }, {
+    where: {
       id: req.params.id
     }
-    }).then(function(err, activity){
-    if (err){
-      res.send(err);
-    } else {
-      res.json({message: 'Activity deleted'});
-    }
+  }).then(function(update){
+    res.json({message:'Updated name'});
   })
 })
+// // DELETE	/activities/{id}	Delete one activity I am tracking. This should remove tracked data for that activity as well.
+router.route('/activities/:id')
+.delete(function(req, res){
+  models.Activity.destroy({
+    where: {
+      id: req.params.id
+    }}, {
+      name: req.body.name,
+      performance: req.body.performance,
+      date: req.body.date,
+      id: req.body.id
+    },
+  ).then(function(removed){
+    res.json({message: 'Deleted'});
+  })
+})
+
 // // POST	/activities/{id}/stats	Add tracked data for a day. The data sent with this should include the day tracked. You can also override the data for a day already recorded.
 router.route('/activities/:id/stats')
-.post(function(req,res){
-  let id = req.params.id;
-  let tracked = {
-    name: req.body.name,
-    performance: req.body.performance,
-    date: req.body.date
-  }
-  models.Activity.findById(id).then(function(err, activity){
-    if (err){
-      res.send(err);
-    } else {
-      res.json({message: 'Added tracked data for a day'})
-    }
+.post(function(req, res){
+  models.Activity.create({
+    where: {
+      id: req.params.id
+    }}, {
+      name: req.body.name,
+      performance: req.body.performance,
+      date: req.body.date,
+    },
+  ).then(function(added){
+    res.json({message: 'Added tracked data for the following date: ' + req.body.date});
   })
 })
 
-
 // // DELETE	/stats/{id}	Remove tracked data for a day.
-// //currently set to id. Needs to be id and date.
-// router.route('stats/{id}')
-// .delete(function (req,res){
-//   let id = req.params.id;
-//   let tracked = {
-//     activity.name = req.body.name,
-//     activity.performance = req.body.performance,
-//     activity.date = req.body.date
-//   }
-//   models.Activity.findById(id).then(function(err, activity){
-//     if (err){
-//       res.send(err);
-//     } else {
-//       models.Activity.destroy({
-//         where: {
-//           date: req.params.date
-//         }
-//       }).then(function(activity){
-//         res.json({message: 'Tracked activity deleted'})
-//       })
-//     }
-//   })
-//
-// })
+router.route('/stats/:id')
+.delete(function(req, res){
+  models.Activity.destroy({
+    where: {
+      id: req.params.id,
+    }}, {
+      name: req.body.name,
+      performance: req.body.performance,
+      date: req.body.date,
+      id: req.body.id
+    },
+  ).then(function(removed){
+    res.json({message: 'Deleted tracked data for a day'});
+  })
+})
 
 
 
