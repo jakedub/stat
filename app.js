@@ -15,3 +15,22 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(expressValidator());
 
 app.use(routes);
+
+//Add Activity for Testing
+// models.Activity.create({
+//   name: 'Flight of Stairs',
+//   performance: 10,
+//   date: 2016/10/01
+// }).then(function(){
+//   return models.Activity.findAll();
+// }).then(function(activity){
+//   console.log(activity.map(function(activity){
+//     return activity.name;
+//   }));
+// });
+
+
+
+app.listen(3000, function(){
+  console.log("Listening yet?");
+})
