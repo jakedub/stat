@@ -85,7 +85,7 @@ router.route('/activities/:id/stats')
 .post(function(req, res){
   models.Activity.create({
     where: {
-      id: req.params.id
+      date: req.params.date
     }}, {
       name: req.body.name,
       performance: req.body.performance,
@@ -97,17 +97,12 @@ router.route('/activities/:id/stats')
 })
 
 // // DELETE	/stats/{id}	Remove tracked data for a day.
-router.route('/stats/:id')
+router.route('/stats')
 .delete(function(req, res){
   models.Activity.destroy({
     where: {
-      id: req.params.id,
-    }}, {
-      name: req.body.name,
-      performance: req.body.performance,
-      date: req.body.date,
-      id: req.body.id
-    },
+      date: req.query.date,
+    }},
   ).then(function(removed){
     res.json({message: 'Deleted tracked data for a day'});
   })

@@ -18,9 +18,9 @@ app.use(routes);
 
 //Add Activity for Testing
 // models.Activity.create({
-//   name: 'Flight of Stairs',
-//   performance: 10,
-//   date: 2016/10/01
+//   name: 'Milk a cow',
+//   performance: 30,
+//   date: 09/23/2014
 // }).then(function(){
 //   return models.Activity.findAll();
 // }).then(function(activity){
