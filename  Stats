@@ -1,0 +1,99 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Stat Tracking",
+		"_postman_id": "cf77f383-b831-303f-b4e3-c059b52e14d1",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/api/activities",
+			"request": {
+				"url": "http://localhost:3000/api/activities",
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": "Getting all activities"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/activities copy",
+			"request": {
+				"url": "http://localhost:3000/api/activities",
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": "Getting all activities"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/activities/1/stats",
+			"request": {
+				"url": "http://localhost:3000/api/activities",
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": "Getting all activities"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/activities",
+			"request": {
+				"url": "http://localhost:3000/api/activities",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Post New Activity"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/activities",
+			"request": {
+				"url": "http://localhost:3000/api/activities/{id}",
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": "Get one activity that is being tracked"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/activities",
+			"request": {
+				"url": "http://localhost:3000/api/activities/1",
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"description": "Update something on an activity"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/activities/2",
+			"request": {
+				"url": "http://localhost:3000/api/activities/2",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "Delete an activity"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/stats/2",
+			"request": {
+				"url": "http://localhost:3000/api/activities/2",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "Delete an activity"
+			},
+			"response": []
+		}
+	]
+}
